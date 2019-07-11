@@ -19,3 +19,4 @@ The formulation of PEL is as follows:
 <a href="https://www.codecogs.com/eqnedit.php?latex=PEL&space;=&space;1&space;-&space;\frac{a^n&space;\cdot&space;b}{a&space;&plus;&space;b}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?PEL&space;=&space;1&space;-&space;\frac{a^n&space;\cdot&space;b}{a&space;&plus;&space;b}" title="PEL = 1 - \frac{a^n \cdot b}{a + b}" /></a>
 
 
+By exponentiating the prediction vector we largen the gap between the small values and the larger values making the relevant portions more prominent in the loss.
