@@ -10,10 +10,10 @@ The Dice Loss is formulated as:
 Let $a$ be the flattened predicted vector
 Let $b$ be the flattened binary ground truth mask
 
-$ Dice Loss = 1 - \frac{a \cdot b}{a + b}
+$ Dice Loss = 1 - \frac{a \cdot b}{a + b}$
 
 The formulation of PEL is as follows:
 
-$ PEL = 1 - \frac{a^n \cdot b}{a + b}
+$ PEL = 1 - \frac{a^n \cdot b}{a + b}$
 
 
