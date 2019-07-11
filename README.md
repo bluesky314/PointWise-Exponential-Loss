@@ -11,6 +11,7 @@ Let $a$ be the flattened predicted vector
 Let $b$ be the flattened binary ground truth mask
 <img src="https://latex.codecogs.com/svg.latex?\Large&space;Dice Loss = 1 - \frac{a \cdot b}{a + b}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
 
+<a href="https://www.codecogs.com/eqnedit.php?latex=Dice&space;=&space;1&space;-&space;\frac{a&space;\cdot&space;b}{a&space;&plus;&space;b}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Dice&space;=&space;1&space;-&space;\frac{a&space;\cdot&space;b}{a&space;&plus;&space;b}" title="Dice = 1 - \frac{a \cdot b}{a + b}" /></a>
 
 $ Dice Loss = 1 - \frac{a \cdot b}{a + b}$
 
