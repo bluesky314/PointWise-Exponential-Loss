@@ -9,6 +9,8 @@ The Dice Loss is formulated as:
 
 Let $a$ be the flattened predicted vector
 Let $b$ be the flattened binary ground truth mask
+<img src="https://latex.codecogs.com/svg.latex?\Large&space;x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" title="\Large x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}" />
+
 
 $ Dice Loss = 1 - \frac{a \cdot b}{a + b}$
 
