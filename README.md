@@ -10,11 +10,16 @@ The Dice Loss is formulated as:
 Let $a$ be the flattened predicted vector
 Let $b$ be the flattened binary ground truth mask
  
-<a href="https://www.codecogs.com/eqnedit.php?latex=Dice&space;=&space;1&space;-&space;\frac{a&space;\cdot&space;b}{a&space;&plus;&space;b}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Dice&space;=&space;1&space;-&space;\frac{a&space;\cdot&space;b}{a&space;&plus;&space;b}" title="Dice = 1 - \frac{a \cdot b}{a + b}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=Dice=1-\frac{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}}{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}&plus;&space;\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{1&space;i}&plus;\sum_{i=1}^{N}&space;p_{1&space;i}&space;g_{0&space;i}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Dice=1-\frac{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}}{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}&plus;&space;\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{1&space;i}&plus;\sum_{i=1}^{N}&space;p_{1&space;i}&space;g_{0&space;i}}" title="Dice=1-\frac{\sum_{i=1}^{N} p_{0 i} g_{0 i}}{\sum_{i=1}^{N} p_{0 i} g_{0 i}+ \sum_{i=1}^{N} p_{0 i} g_{1 i}+\sum_{i=1}^{N} p_{1 i} g_{0 i}}" /></a>
+
 
 [//]: #$ Dice Loss = 1 - \frac{a \cdot b}{a + b}$
 
 The formulation of PEL is as follows:
+
+<a href="https://www.codecogs.com/eqnedit.php?latex=Dice=1-\frac{\sum_{i=1}^{N}&space;p_{0&space;i}^n&space;g_{0&space;i}}{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}&plus;&space;\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{1&space;i}&plus;\sum_{i=1}^{N}&space;p_{1&space;i}&space;g_{0&space;i}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Dice=1-\frac{\sum_{i=1}^{N}&space;p_{0&space;i}^n&space;g_{0&space;i}}{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}&plus;&space;\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{1&space;i}&plus;\sum_{i=1}^{N}&space;p_{1&space;i}&space;g_{0&space;i}}" title="Dice=1-\frac{\sum_{i=1}^{N} p_{0 i}^n g_{0 i}}{\sum_{i=1}^{N} p_{0 i} g_{0 i}+ \sum_{i=1}^{N} p_{0 i} g_{1 i}+\sum_{i=1}^{N} p_{1 i} g_{0 i}}" /></a>
+
+A slight change of raising the prediction map to a power has the effect of weighing each point according to the deviation of the ground truth at the point. This effectively creates a attention map per sample allowing the network to focus on regions of large loss.
 
 <a href="https://www.codecogs.com/eqnedit.php?latex=PEL&space;=&space;1&space;-&space;\frac{a^n&space;\cdot&space;b}{a&space;&plus;&space;b}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?PEL&space;=&space;1&space;-&space;\frac{a^n&space;\cdot&space;b}{a&space;&plus;&space;b}" title="PEL = 1 - \frac{a^n \cdot b}{a + b}" /></a>
 
