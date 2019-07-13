@@ -5,19 +5,20 @@ Here we introduce our PointWise Exponential Loss for more accurate semantic segm
 
 From this insight we introduce PointWise Exponential Loss(PEL) which aims to dynamically create a weight map to largen the gap between the true signal and the noise in the gradient. It assigns a weight to each pixel depending on the magnitude of loss that pixel contributes. PEL is a modified version of the popular Dice Loss for semantic segmentation.
 
-The Dice Loss is formulated as:
+The Dice Loss can be formulated as:
 
-Let $a$ be the flattened predicted vector
-Let $b$ be the flattened binary ground truth mask
+
  
 <a href="https://www.codecogs.com/eqnedit.php?latex=Dice=1-\frac{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}}{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}&plus;&space;\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{1&space;i}&plus;\sum_{i=1}^{N}&space;p_{1&space;i}&space;g_{0&space;i}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Dice=1-\frac{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}}{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}&plus;&space;\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{1&space;i}&plus;\sum_{i=1}^{N}&space;p_{1&space;i}&space;g_{0&space;i}}" title="Dice=1-\frac{\sum_{i=1}^{N} p_{0 i} g_{0 i}}{\sum_{i=1}^{N} p_{0 i} g_{0 i}+ \sum_{i=1}^{N} p_{0 i} g_{1 i}+\sum_{i=1}^{N} p_{1 i} g_{0 i}}" /></a>
+
+where p is the prediction vector and g the ground truth
 
 
 [//]: #$ Dice Loss = 1 - \frac{a \cdot b}{a + b}$
 
-The formulation of PEL is as follows:
+The formulation of P.E.L is as follows:
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=Dice=1-\frac{\sum_{i=1}^{N}&space;p_{0&space;i}^n&space;g_{0&space;i}}{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}&plus;&space;\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{1&space;i}&plus;\sum_{i=1}^{N}&space;p_{1&space;i}&space;g_{0&space;i}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Dice=1-\frac{\sum_{i=1}^{N}&space;p_{0&space;i}^n&space;g_{0&space;i}}{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}&plus;&space;\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{1&space;i}&plus;\sum_{i=1}^{N}&space;p_{1&space;i}&space;g_{0&space;i}}" title="Dice=1-\frac{\sum_{i=1}^{N} p_{0 i}^n g_{0 i}}{\sum_{i=1}^{N} p_{0 i} g_{0 i}+ \sum_{i=1}^{N} p_{0 i} g_{1 i}+\sum_{i=1}^{N} p_{1 i} g_{0 i}}" /></a>
+<a href="https://www.codecogs.com/eqnedit.php?latex=P.E.L=1-\frac{\sum_{i=1}^{N}&space;p_{0&space;i}^n&space;g_{0&space;i}}{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}&plus;&space;\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{1&space;i}&plus;\sum_{i=1}^{N}&space;p_{1&space;i}&space;g_{0&space;i}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P.E.L=1-\frac{\sum_{i=1}^{N}&space;p_{0&space;i}^n&space;g_{0&space;i}}{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}&plus;&space;\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{1&space;i}&plus;\sum_{i=1}^{N}&space;p_{1&space;i}&space;g_{0&space;i}}" title="P.E.L=1-\frac{\sum_{i=1}^{N} p_{0 i}^n g_{0 i}}{\sum_{i=1}^{N} p_{0 i} g_{0 i}+ \sum_{i=1}^{N} p_{0 i} g_{1 i}+\sum_{i=1}^{N} p_{1 i} g_{0 i}}" /></a>
 
 A slight change of raising the prediction map to a power has the effect of weighing each point according to the deviation of the ground truth at the point. This effectively creates a attention map per sample allowing the network to focus on regions of large loss.
 
