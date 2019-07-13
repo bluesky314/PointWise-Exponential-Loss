@@ -8,13 +8,10 @@ From this insight we introduce PointWise Exponential Loss(PEL) which aims to dyn
 The Dice Loss can be formulated as:
 
 
- 
 <a href="https://www.codecogs.com/eqnedit.php?latex=Dice=1-\frac{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}}{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}&plus;&space;\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{1&space;i}&plus;\sum_{i=1}^{N}&space;p_{1&space;i}&space;g_{0&space;i}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?Dice=1-\frac{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}}{\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{0&space;i}&plus;&space;\sum_{i=1}^{N}&space;p_{0&space;i}&space;g_{1&space;i}&plus;\sum_{i=1}^{N}&space;p_{1&space;i}&space;g_{0&space;i}}" title="Dice=1-\frac{\sum_{i=1}^{N} p_{0 i} g_{0 i}}{\sum_{i=1}^{N} p_{0 i} g_{0 i}+ \sum_{i=1}^{N} p_{0 i} g_{1 i}+\sum_{i=1}^{N} p_{1 i} g_{0 i}}" /></a>
 
 where p is the prediction vector and g the ground truth
 
-
-[//]: #$ Dice Loss = 1 - \frac{a \cdot b}{a + b}$
 
 The formulation of P.E.L is as follows:
 
@@ -22,7 +19,6 @@ The formulation of P.E.L is as follows:
 
 A slight change of raising the prediction map to a power has the effect of weighing each point according to the deviation of the ground truth at the point. This effectively creates a attention map per sample allowing the network to focus on regions of large loss.
 
-<a href="https://www.codecogs.com/eqnedit.php?latex=PEL&space;=&space;1&space;-&space;\frac{a^n&space;\cdot&space;b}{a&space;&plus;&space;b}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?PEL&space;=&space;1&space;-&space;\frac{a^n&space;\cdot&space;b}{a&space;&plus;&space;b}" title="PEL = 1 - \frac{a^n \cdot b}{a + b}" /></a>
+In vectorized notation this can simply be represented as:
 
-
-By exponentiating the prediction vector we largen the gap between the small values and the larger values making the relevant portions more prominent in the loss.
+<a href="https://www.codecogs.com/eqnedit.php?latex=P.E.L&space;=&space;1&space;-&space;\frac{p^n&space;\cdot&space;g}{p&space;&plus;&space;g}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?P.E.L&space;=&space;1&space;-&space;\frac{p^n&space;\cdot&space;g}{p&space;&plus;&space;g}" title="P.E.L = 1 - \frac{p^n \cdot g}{p + g}" /></a>
