@@ -24,4 +24,4 @@ For segmentation tasks where we have multiple instances of the target class like
 
 ## Results
 
-On average we observe an increase of 1-3 points for histopathology datasets. We are currently testing on natural image datasets and results will be uploaded soon.....
+On average we observe an increase of 1-3 points for histopathology datasets. We are currently testing on natural image datasets and results will be uploaded soon. The code for the loss is present in the repo in losses.py 
