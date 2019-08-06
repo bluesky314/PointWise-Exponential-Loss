@@ -1,5 +1,8 @@
 
+
 # PointWise-Exponential-Loss
+
+Files are yet to be uploaded along with corrections and more details. 
 
 ## Abstract 
 We introduce PointWise Exponential Loss for more accurate semantic segmentation. Consider a trained segmentation network that achives respectible IoU score. Visualising the absolute deviation map between predictions and ground truth(GT) for any sample, it can be observed that the largest deviations from the GT occour at the edges and within small regions of the image. We would typically expect the network to continue to optimize for these regions since they contribute largly to the loss function. However, there are minute deviations from the GT all over the map which occur at a significantly higher frequency than these larger loss regions. These minute deviations in aggregate contribute almost equally to the loss as the areas of intrest. Thus, these regions of low loss causes the true signal in the gradient to be diluted leading to noisy and unstable gradients once the network has reached a create performace. Thus, we introduce PointWise Exponential Loss(P.E.L) which largens the gap between the true signal and noise in the gradient by making points of large loss significantly more prominent than their minute counter parts. P.E.L's action can be thought of as dynamically creating a weight map for the output mask where the weight at a point is proportional to that point's absolute deviation from the ground truth. We test our loss on multiple saturated models to find an average increase of about 1-3 points. P.E.L is a modified version of the popular Dice Loss for semantic segmentation and is to be used on a trained model to furthur fine tune it. 
